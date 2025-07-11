@@ -1,0 +1,330 @@
+/* Import Google fonts - Adding Khmer font support */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans Khmer", "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result_field {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.result_images {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.container.start .user_result {
+  transform-origin: left;
+  animation: userShake 0.7s ease infinite;
+}
+
+@keyframes userShake {
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.container.start .bot_result {
+  transform-origin: right;
+  animation: botShake 0.7s ease infinite;
+}
+
+@keyframes botShake {
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+.result_images img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.user_result, .bot_result {
+  position: relative;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 50%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.user_result::before, .bot_result::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.user_result img {
+  transform: rotate(90deg);
+}
+
+.bot_result img {
+  transform: rotate(-90deg) rotateY(180deg);
+}
+
+.result {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 1.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.option_images {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.container.start .option_images {
+  pointer-events: none;
+}
+
+.option_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.option_image:hover {
+  opacity: 1;
+  transform: scale(1);
+  background: rgba(255, 255, 255, 1);
+  border: 2px solid #667eea;
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+}
+
+.option_image.active {
+  opacity: 1;
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid #ffffff;
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+}
+
+.option_image.active p {
+  color: white;
+  font-weight: 600;
+}
+
+.option_image img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.option_image:hover img {
+  transform: scale(1.1);
+}
+
+.option_image p {
+  color: #9eaae2;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* New styles for game title and VS text */
+.game-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vs-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  align-self: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 2px solid #667eea;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .result_images {
+    gap: 2rem;
+  }
+
+  .result_images img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .user_result, .bot_result {
+    padding: 0.8rem;
+  }
+
+  .result {
+    font-size: 2rem;
+  }
+
+  .option_images {
+    gap: 0.5rem;
+  }
+
+  .option_image {
+    padding: 1rem;
+  }
+
+  .option_image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .option_image p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .result_images {
+    gap: 1.5rem;
+  }
+
+  .result_images img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user_result, .bot_result {
+    padding: 0.6rem;
+  }
+
+  .result {
+    font-size: 1.8rem;
+  }
+
+  .option_images {
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .option_image {
+    flex: 1;
+    padding: 0.8rem 0.5rem;
+    max-width: none;
+  }
+
+  .option_image img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .option_image p {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .game-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .vs-text {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Add a subtle pulse animation for the game title */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.result {
+  animation: pulse 2s ease-in-out infinite;
+}
